@@ -27,6 +27,20 @@ body {
 h1 {
     font-family: Roboto;
     color: rgba(250, 180, 114, 0.63);
+
+
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+
+    from {
+        text-shadow: 0 0 5px #cc1a46;
+    }
+
+    to {
+        text-shadow: 0 0 25px #612525;
+    }
 }
 
 h2 {
