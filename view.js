@@ -20,5 +20,5 @@ export function createInput(labelText, min, max, value) {
 
 export function showResult(text) {
     let resultDiv = document.querySelector("#result");
-    resultDiv.textContent = text;
+    resultDiv.innerText = text;
 }
