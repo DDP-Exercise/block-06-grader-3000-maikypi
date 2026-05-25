@@ -114,3 +114,30 @@ export function calcFinalGrade() {
         return "Sehr gut";
     }
 }
+
+
+export function getNegativeReasons() {
+    let reasons = [];
+
+    if (!checkPointPositive(calcExerciseGrade())) {
+        reasons.push("Übungsnote ist negativ.");
+    }
+
+    if (!checkPointPositive(examGrade)) {
+        reasons.push("Klausur ist negativ.");
+    }
+
+    if (!enoughPositiveExercises()) {
+        reasons.push("Zu wenige Übungen sind positiv.");
+    }
+
+    if (!checkPresence()) {
+        reasons.push("Anwesenheit ist unter 80%.");
+    }
+
+    if (calcOverallPercent() <= 50) {
+        reasons.push("Gesamtpunkte sind nicht über 50%.");
+    }
+
+    return reasons;
+}
