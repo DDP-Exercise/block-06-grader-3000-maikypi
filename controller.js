@@ -4,7 +4,11 @@ import {
     pointsExercise,
     pointsExam,
     setPresence,
-    calcFinalGrade
+    calcFinalGrade,
+    calcOverallPercent,
+    calcExerciseGrade,
+    getWorstExerciseIndex,
+    getNegativeReasons
 } from "./model.js";
 
 import {
@@ -13,7 +17,7 @@ import {
 } from "./view.js";
 
 
-/* Übungen Container holen */
+/* get the exercises from container */
 let exercisesDiv = document.querySelector("#exercises");
 
 /* 8 Übungsfelder erstellen */
@@ -21,7 +25,7 @@ for (let i = 0; i < 8; i++) {
 
     let input = createInput("Übung " + (i + 1), 0, 100, 0);
 
-    /* ins HTML einfügen */
+    /* put it into HTML */
     exercisesDiv.appendChild(input.parentElement);
 
     /* Event Listener */
@@ -34,7 +38,7 @@ for (let i = 0; i < 8; i++) {
 }
 
 
-/* Klausurfeld */
+/* Exam  */
 let examDiv = document.querySelector("#exam");
 
 let examInput = createInput("Klausur", 0, 100, 0);
@@ -49,7 +53,7 @@ examInput.addEventListener("change", function () {
 });
 
 
-/* Anwesenheit */
+/* presence */
 let presenceDiv = document.querySelector("#presence");
 
 let presenceInput = createInput("Anwesenheit", 0, 100, 0);
@@ -64,10 +68,41 @@ presenceInput.addEventListener("change", function () {
 });
 
 
-/* Ergebnis aktualisieren */
+/* Update the results */
 function updateResult() {
 
     let grade = calcFinalGrade();
+    let percent = calcOverallPercent();
+    let exercisePercent = calcExerciseGrade();
+    let worstIndex = getWorstExerciseIndex();
+    let reasons = getNegativeReasons();
 
-    showResult("Gesamtnote: " + grade);
+    let text =
+        "Übungsnote: " + exercisePercent.toFixed(2) + "%\n" +
+        "Gesamtprozent: " + percent.toFixed(2) + "%\n" +
+        "Streichergebnis: Übung " + (worstIndex + 1) + "\n" +
+        "Gesamtnote: " + grade;
+
+    if (reasons.length > 0) {
+
+        text = text + "\n\nWarum negativ?\n";
+
+        for (let i = 0; i < reasons.length; i++) {
+            text = text + reasons[i] + "\n";
+        }
+    }
+
+    showResult(text);
+
+
+    let allInputs = document.querySelectorAll("#exercises input");
+
+    for (let i = 0; i < allInputs.length; i++) {
+
+        allInputs[i].style.backgroundColor = "";
+
+        if (i === worstIndex) {
+            allInputs[i].style.backgroundColor = "gray";
+        }
+    }
 }
