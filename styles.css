@@ -74,3 +74,13 @@ label {
     color: rgb(197, 163, 163);
     font-weight: bold;
 }
+
+#result {
+    color: white;
+
+    font-size: 18px;
+
+    margin-top: 20px;
+
+    white-space: pre-line;
+}
