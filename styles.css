@@ -3,7 +3,6 @@ body {
             linear-gradient(rgba(0,0,0,0.4),
             rgba(0,0,0,0.4)),
             url("image/Wallpaper.jpg");
-    overflow-y: hidden;
     overflow-x: hidden;
 
 }
