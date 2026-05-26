@@ -1,0 +1,85 @@
+body {
+    background-image:
+            linear-gradient(rgba(0,0,0,0.4),
+            rgba(0,0,0,0.4)),
+            url("image/Wallpaper.jpg");
+    overflow-x: hidden;
+
+}
+.right-images {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.right-images img {
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid mediumslateblue;
+    box-shadow: 0 1px rgb(253, 216, 184);
+
+}
+
+.right-images img:hover {
+
+    transform: translateY(-8px) scale(1.05);
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+
+
+h1 {
+    font-family: Roboto;
+    color: rgba(250, 180, 114, 0.63);
+
+
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+
+    from {
+        text-shadow: 0 0 5px #cc1a46;
+    }
+
+    to {
+        text-shadow: 0 0 25px #612525;
+    }
+}
+
+h2 {
+    font-family: Roboto;
+    color: rgba(250, 180, 114, 0.63);
+}
+
+.content {
+    background-color: rgba(255, 255, 255, 0.8);
+
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    width: 70%;
+
+    margin: auto;
+}
+
+label {
+    font-family: Roboto;
+    color: rgb(197, 163, 163);
+    font-weight: bold;
+}
+
+#result {
+    color: white;
+
+    font-size: 18px;
+
+    margin-top: 20px;
+
+    white-space: pre-line;
+}
